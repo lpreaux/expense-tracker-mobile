@@ -21,7 +21,7 @@ Fonctionnalités que j'attends pour le mini-projet :
 
 - 1 page d'accueil qui liste les groupes dans lesquels on participe.
 - 1 page de détail d'un groupe inspiré de l'application déjà réalisé :
-  ![](/conception/Modif depuis app existante.png)
+  ![](conception/Modif depuis app existante.png)
 - 1 page qui permet de gérer la liste des utilisateurs participant à un groupe.
 - 1 historique de dépense par groupe.
 - ...
