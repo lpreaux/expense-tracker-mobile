@@ -21,29 +21,29 @@ Fonctionnalités que j'attends pour le mini-projet :
 
 ### 1ère étape :
 
-- 1 page d'accueil qui liste les groupes dans lesquels on participe.
-- 1 page de détail d'un groupe inspiré de l'application déjà réalisé :  
+- [x] 1 page d'accueil qui liste les groupes dans lesquels on participe.
+- [ ] 1 page de détail d'un groupe inspiré de l'application déjà réalisé :  
   ![Illustration des choses à modifier par rapport à l'application d'origine](/conception/Modif-depuis-app-existante.png)
-- 1 page qui permet de gérer la liste des participants à un groupe.
-- 1 historique de dépense par groupe.
-- Sauvegarde des participants et des dépenses dans indexedDb.
-- 1 dépense peut être associé à un lieu qui peut être obtenu grâce à la loclaisation.
-- Pouvoir ajouter une photo d'un ticket à une dépense.
+- [ ] 1 page qui permet de gérer la liste des participants à un groupe.
+- [ ] 1 historique de dépense par groupe.
+- [ ] Sauvegarde des participants et des dépenses dans indexedDb.
+- [ ] 1 dépense peut être associé à un lieu qui peut être obtenu grâce à la loclaisation.
+- [ ] Pouvoir ajouter une photo d'un ticket à une dépense.
 
 ### 2ème étape :
 
-- 1 page d'équilibre avec :
-  - un graphique montrant qui doit de l'argent et qui doit en recevoir.
-  - une liste de des montants du par qui et à qui.
-  - Pouvoir envoyer une demande de remboursement.
-  - Pouvoir partager un récapitulatif avec les fonctions du tel.
+- [ ] 1 page d'équilibre avec :
+  - [ ] un graphique montrant qui doit de l'argent et qui doit en recevoir.
+  - [ ] une liste de des montants du par qui et à qui.
+  - [ ] Pouvoir envoyer une demande de remboursement.
+  - [ ] Pouvoir partager un récapitulatif avec les fonctions du tel.
 
 ### 3ème étape : 
 
-- Plusieurs utilisateurs peuvent utiliser un même groupe.
-- Chaque utilisateur peut être associé à un participant.
-- Un utilisateur peut laisser des informations de remboursement.
-- Possibilité de rembourser depuis l'app - avec Stripe (plugin capacitor) ?
+- [ ] Plusieurs utilisateurs peuvent utiliser un même groupe.
+- [ ] Chaque utilisateur peut être associé à un participant.
+- [ ] Un utilisateur peut laisser des informations de remboursement.
+- [ ] Possibilité de rembourser depuis l'app - avec Stripe (plugin capacitor) ?
 
 ___
 

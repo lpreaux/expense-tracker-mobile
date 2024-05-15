@@ -9,23 +9,25 @@
 <ion-content [fullscreen]="true">
 
   <div id="container">
-    <section>
-      <ion-text>Souhaitez-vous reprendre où vous en étiez ?</ion-text>
-      <ion-card>
-        <ion-card-title>Vacance en Espagne</ion-card-title>
-      </ion-card>
-    </section>
+    @if (lastGroupUse(); as lastGroupUse) {
+      <section>
+        <ion-text>Souhaitez-vous reprendre où vous en étiez ?</ion-text>
+        <ion-card [routerLink]="['/', 'group', lastGroupUse.id]">
+          <ion-card-title>{{ lastGroupUse.name }}</ion-card-title>
+        </ion-card>
+      </section>
+    }
+
     <section>
       <ion-text>Vos autres groupes</ion-text>
       <ion-list lines="full">
-        @for (item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; track item) {
-          <ion-item>
-            <ion-label>Groupe {{item}}</ion-label>
+        @for (group of groups; track group.id) {
+          <ion-item [routerLink]="['/', 'group', group.id]">
+            <ion-label>{{ group.name }}</ion-label>
           </ion-item>
         }
       </ion-list>
     </section>
-
   </div>
 
 </ion-content>
