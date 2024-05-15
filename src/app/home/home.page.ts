@@ -1,4 +1,4 @@
-import {Component, OnInit, Signal} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Group, GroupService} from "../providers/group.service";
 
 @Component({

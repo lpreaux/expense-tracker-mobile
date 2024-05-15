@@ -6,15 +6,25 @@ import { IonicModule } from '@ionic/angular';
 
 import { GroupPageRoutingModule } from './group-routing.module';
 
-import { GroupPage } from './group.page';
+import { GroupComponent } from './group.component';
+import {ExpensesPage} from "./expenses/expenses.page";
+import {BalancePage} from "./balance/balance.page";
+import {ParticipantsPage} from "./participants/participants.page";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GroupPageRoutingModule
+    GroupPageRoutingModule,
+    SharedModule,
   ],
-  declarations: [GroupPage]
+  declarations: [
+    GroupComponent,
+    ExpensesPage,
+    BalancePage,
+    ParticipantsPage,
+  ]
 })
 export class GroupPageModule {}
