@@ -26,15 +26,17 @@ Fonctionnalités que j'attends pour le mini-projet :
   ![Illustration des choses à modifier par rapport à l'application d'origine](/conception/Modif-depuis-app-existante.png)
 - 1 page qui permet de gérer la liste des participants à un groupe.
 - 1 historique de dépense par groupe.
-- Sauvegarde des participants et des dépenses dans indexedDb
+- Sauvegarde des participants et des dépenses dans indexedDb.
 - 1 dépense peut être associé à un lieu qui peut être obtenu grâce à la loclaisation.
+- Pouvoir ajouter une photo d'un ticket à une dépense.
 
 ### 2ème étape :
 
 - 1 page d'équilibre avec :
   - un graphique montrant qui doit de l'argent et qui doit en recevoir.
   - une liste de des montants du par qui et à qui.
-  - La possibilité de partager un récapitulatif avec les fonctions du tel.
+  - Pouvoir envoyer une demande de remboursement.
+  - Pouvoir partager un récapitulatif avec les fonctions du tel.
 
 ### 3ème étape : 
 
@@ -46,3 +48,13 @@ Fonctionnalités que j'attends pour le mini-projet :
 ___
 
 Le but est d'avancé étape par étape et d'avoir au moins l'étape 1 en fin de projet.
+
+
+### Maquette Figma
+
+Une maquette figma avec un prototype fonctionnel est disponible à l'adresse suivante :
+
+- [maquette](https://www.figma.com/design/0waB0iN1MJPkdvgaHlUBtY/Material-3-Design-Kit-(Community)?node-id=54801%3A25393&t=fl3Fv9LQSLOq4b8V-1)
+- [prototype](https://www.figma.com/proto/0waB0iN1MJPkdvgaHlUBtY/Material-3-Design-Kit-(Community)?page-id=54801%3A25393&node-id=54826-28755&viewport=775%2C532%2C0.99&t=IGXkDFNYVJCh72ub-1&scaling=scale-down&starting-point-node-id=54826%3A28755)
+
+(La maquette actuelle est une ébauche permettant d'avoir une idée de l'objectif mais n'est pas pixel perfect et pourra évoluer au cours du développement)
