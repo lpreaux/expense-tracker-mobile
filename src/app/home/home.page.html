@@ -1,20 +1,31 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar id="header--toolbar" color="primary">
     <ion-title>
-      Blank
+      Bienvenue Vincent
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <section>
+      <ion-text>Souhaitez-vous reprendre où vous en étiez ?</ion-text>
+      <ion-card>
+        <ion-card-title>Vacance en Espagne</ion-card-title>
+      </ion-card>
+    </section>
+    <section>
+      <ion-text>Vos autres groupes</ion-text>
+      <ion-list lines="full">
+        @for (item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; track item) {
+          <ion-item>
+            <ion-label>Groupe {{item}}</ion-label>
+          </ion-item>
+        }
+      </ion-list>
+    </section>
+
   </div>
+
 </ion-content>
