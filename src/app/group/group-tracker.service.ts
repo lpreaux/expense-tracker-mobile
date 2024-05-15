@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class GroupTrackerService {
-  private _currentGroup = signal<Group|undefined>(undefined)
+  private _currentGroup = signal<Group | undefined>(undefined)
   get currentGroup() {
     return this._currentGroup.asReadonly();
   }
@@ -14,15 +14,17 @@ export class GroupTrackerService {
   constructor(
     private groupService: GroupService,
     private router: Router,
-  ) { }
+  ) {
+  }
 
   setCurrentGroup(groupId: number) {
-    const group = this.groupService.getById(groupId);
-    if (group === -1) {
-      this.router.navigate(['/']);
-      return;
-    }
-    this._currentGroup.set(group);
-    this.groupService.setLastGroupUse(group);
+    this.groupService.getById(groupId)
+      .subscribe({
+        next: group => {
+          this._currentGroup.set(group);
+          this.groupService.setLastGroupUse(group);
+        },
+        error: () => this.router.navigate(['/'])
+      });
   }
 }

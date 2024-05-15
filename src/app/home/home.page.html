@@ -6,8 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-
+<ion-content>
   <div id="container">
     @if (lastGroupUse(); as lastGroupUse) {
       <section>
@@ -21,7 +20,7 @@
     <section>
       <ion-text>Vos autres groupes</ion-text>
       <ion-list lines="full">
-        @for (group of groups; track group.id) {
+        @for (group of groups(); track group.id) {
           <ion-item [routerLink]="['/', 'group', group.id]">
             <ion-label>{{ group.name }}</ion-label>
           </ion-item>

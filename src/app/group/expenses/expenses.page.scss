@@ -3,3 +3,11 @@
   display: grid;
   gap: 2rem;
 }
+
+#header {
+  display: grid;
+}
+
+#header ion-text > * {
+  margin: 0;
+}

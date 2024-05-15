@@ -22,11 +22,13 @@ Fonctionnalités que j'attends pour le mini-projet :
 ### 1ère étape :
 
 - [x] 1 page d'accueil qui liste les groupes dans lesquels on participe.
-- [ ] 1 page de détail d'un groupe inspiré de l'application déjà réalisé :  
+- [x] 1 page de détail d'un groupe inspiré de l'application déjà réalisé :  
   ![Illustration des choses à modifier par rapport à l'application d'origine](/conception/Modif-depuis-app-existante.png)
 - [ ] 1 page qui permet de gérer la liste des participants à un groupe.
-- [ ] 1 historique de dépense par groupe.
-- [ ] Sauvegarde des participants et des dépenses dans indexedDb.
+- [x] 1 historique de dépense par groupe.
+- [x] Sauvegarde des dépenses dans indexedDb.
+- [x] Sauvegarde des groupes dans indexedDb.
+- [ ] Sauvegarde des participants dans indexedDb.
 - [ ] 1 dépense peut être associé à un lieu qui peut être obtenu grâce à la loclaisation.
 - [ ] Pouvoir ajouter une photo d'un ticket à une dépense.
 

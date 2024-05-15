@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button default-href="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ group()!.name }}</ion-title>
+    <ion-title>{{ group()?.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,8 +14,16 @@
     </ion-fab-button>
   </ion-fab>
   <div id="container">
+    <div id="header">
+      <ion-text color="medium">
+        <h3>Total</h3>
+      </ion-text>
+      <ion-text>
+        <h1>{{ totalExpenses() | currency : 'EUR' }}</h1>
+      </ion-text>
+    </div>
     <ion-list lines="full">
-      @for (expense of group()?.expenses; track expense.id) {
+      @for (expense of expenses(); track expense.id) {
         <app-expenses-list-item [expense]="expense"></app-expenses-list-item>
       }
     </ion-list>

@@ -1,5 +1,6 @@
 import {Component, Input, numberAttribute, OnInit} from '@angular/core';
 import {GroupTrackerService} from "./group-tracker.service";
+import {ExpenseService} from "../providers/expense.service";
 
 @Component({
   selector: 'app-group',
@@ -11,7 +12,7 @@ export class GroupComponent implements OnInit {
   @Input({transform: numberAttribute}) groupId!: number;
 
   constructor(
-    private groupTrackerService: GroupTrackerService
+    private groupTrackerService: GroupTrackerService,
   ) { }
 
   ngOnInit() {
