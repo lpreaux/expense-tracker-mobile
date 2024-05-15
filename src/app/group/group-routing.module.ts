@@ -17,7 +17,7 @@ const routes: Routes = [
     children: [
       {
         path: 'expenses',
-        component: ExpensesPage,
+        loadChildren: () => import('./expenses/expenses.module').then( m => m.ExpensesModule)
       },
       {
         path: '',

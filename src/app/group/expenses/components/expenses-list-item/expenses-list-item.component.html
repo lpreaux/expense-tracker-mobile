@@ -1,0 +1,7 @@
+<ion-item>
+  <ion-icon aria-hidden="true" name="airplane" slot="start"></ion-icon>
+  <ion-label>
+    {{ expense.label }}
+  </ion-label>
+  <ion-note slot="end">{{ expense.amount | currency : 'EUR' }}</ion-note>
+</ion-item>

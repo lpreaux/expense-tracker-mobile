@@ -11,6 +11,7 @@ import {ExpensesPage} from "./expenses/expenses.page";
 import {BalancePage} from "./balance/balance.page";
 import {ParticipantsPage} from "./participants/participants.page";
 import {SharedModule} from "../shared/shared.module";
+import {ExpensesModule} from "./expenses/expenses.module";
 
 @NgModule({
   imports: [
@@ -22,7 +23,6 @@ import {SharedModule} from "../shared/shared.module";
   ],
   declarations: [
     GroupComponent,
-    ExpensesPage,
     BalancePage,
     ParticipantsPage,
   ]

@@ -8,7 +8,16 @@
 </ion-header>
 
 <ion-content>
-  <p>
-    expenses works!
-  </p>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button (click)="openNewExpenseModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div id="container">
+    <ion-list lines="full">
+      @for (expense of group()?.expenses; track expense.id) {
+        <app-expenses-list-item [expense]="expense"></app-expenses-list-item>
+      }
+    </ion-list>
+  </div>
 </ion-content>
