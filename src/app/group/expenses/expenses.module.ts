@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 import { ExpensesRoutingModule } from './expenses-routing.module';
 import {ExpensesPage} from "./expenses.page";
@@ -15,11 +15,12 @@ import {ReactiveFormsModule} from "@angular/forms";
     ExpensesListItemComponent,
     NewEwpenseFormModalComponent
   ],
-  imports: [
-    CommonModule,
-    ExpensesRoutingModule,
-    IonicModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        ExpensesRoutingModule,
+        IonicModule,
+        ReactiveFormsModule,
+        NgOptimizedImage
+    ]
 })
 export class ExpensesModule { }

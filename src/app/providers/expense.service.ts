@@ -7,6 +7,7 @@ export interface Expense {
   groupId: number;
   amount: number;
   label: string;
+  proofImgUrl?: string;
 }
 
 export const expenseStoreDefinition: StoreCreationObject = {

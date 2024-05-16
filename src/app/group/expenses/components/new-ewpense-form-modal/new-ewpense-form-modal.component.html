@@ -13,6 +13,13 @@
         <ion-input type="number" formControlName="amount" label="Montant"></ion-input>
       </ion-item>
     </ion-list>
+    <ion-card (click)="takePicture()">
+      @if (proofImageUrl(); as imageUrl) {
+        <img alt="proof image" [src]="imageUrl"/>
+      } @else {
+        <ion-text>Cliquer ici pour ajouter un justificatif</ion-text>
+      }
+    </ion-card>
   </form>
 </ion-content>
 <ion-footer>
