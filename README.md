@@ -24,13 +24,46 @@ Fonctionnalités que j'attends pour le mini-projet :
 - [x] 1 page d'accueil qui liste les groupes dans lesquels on participe.
 - [x] 1 page de détail d'un groupe inspiré de l'application déjà réalisé :  
   ![Illustration des choses à modifier par rapport à l'application d'origine](/conception/Modif-depuis-app-existante.png)
-- [ ] 1 page qui permet de gérer la liste des participants à un groupe.
+- [x] 1 page qui permet de gérer la liste des participants à un groupe.
 - [x] 1 historique de dépense par groupe.
 - [x] Sauvegarde des dépenses dans indexedDb.
 - [x] Sauvegarde des groupes dans indexedDb.
-- [ ] Sauvegarde des participants dans indexedDb.
-- [ ] 1 dépense peut être associé à un lieu qui peut être obtenu grâce à la loclaisation.
-- [ ] Pouvoir ajouter une photo d'un ticket à une dépense.
+- [x] Sauvegarde des participants dans indexedDb.
+- [ ] 1 dépense peut être associé à un lieu qui peut être obtenu grâce à la géolocalisation.
+- [x] Pouvoir ajouter une photo d'un ticket à une dépense.
+
+#### Cas d'utilisation détaillé :
+
+En tant qu'utilisateur :
+
+- [ ] CRUD Groupe :
+  - [x] Lister les groupes
+  - [x] Affiché les infos d'un groupe
+  - [ ] Ajout d'un groupe
+  - [ ] Modification d'un groupe
+  - [ ] Suppression d'un groupe
+- [ ] CRUD Dépense :
+  - [x] Lister les dépenses d'un groupe
+  - [ ] Affiché le détail d'une dépense
+  - [x] Ajout d'une dépense dans un groupe
+  - [ ] Modification d'une dépense
+  - [ ] Suppression d'une dépense
+- [ ] CRUD Participant :
+  - [x] Lister les participants d'un groupe
+  - [ ] Ajout d'un participant dans un groupe
+  - [ ] Modification d'un participant
+  - [ ] Suppression d'un participant
+
+#### Règles métiers :
+
+- [ ] Groupe:
+  - [ ] Un groupe a forcément un nom
+- [ ] Dépense:
+  - [ ] Une dépense a forcément un libellé
+  - [ ] Une dépense a forcément un montant
+- [ ] Participant:
+  - [ ] Un participant a forcément un nom
+
 
 ### 2ème étape :
 
@@ -47,12 +80,13 @@ Fonctionnalités que j'attends pour le mini-projet :
 - [ ] Un utilisateur peut laisser des informations de remboursement.
 - [ ] Possibilité de rembourser depuis l'app - avec Stripe (plugin capacitor) ?
 
-___
 
-Le but est d'avancé étape par étape et d'avoir au moins l'étape 1 en fin de projet.
+> [!NOTE]
+> Le but est d'avancé étape par étape et d'avoir au moins l'étape 1 en fin de projet.
 
+---
 
-### Maquette Figma
+## Maquette Figma
 
 Une maquette figma avec un prototype fonctionnel est disponible à l'adresse suivante :
 
@@ -60,3 +94,14 @@ Une maquette figma avec un prototype fonctionnel est disponible à l'adresse sui
 - [prototype](https://www.figma.com/proto/0waB0iN1MJPkdvgaHlUBtY/Material-3-Design-Kit-(Community)?page-id=54801%3A25393&node-id=54826-28755&viewport=775%2C532%2C0.99&t=IGXkDFNYVJCh72ub-1&scaling=scale-down&starting-point-node-id=54826%3A28755)
 
 (La maquette actuelle est une ébauche permettant d'avoir une idée de l'objectif mais n'est pas pixel perfect et pourra évoluer au cours du développement)
+
+---
+## Dépendances
+
+- Ionic 7
+- Angular 17
+- Capacitor 6
+
+plugin Capacitor :
+- @capacitor/camera
+- @capacitor/geolocation
