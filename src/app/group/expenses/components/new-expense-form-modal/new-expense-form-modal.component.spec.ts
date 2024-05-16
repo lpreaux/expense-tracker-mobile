@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { NewEwpenseFormModalComponent } from './new-ewpense-form-modal.component';
+import { NewExpenseFormModalComponent } from './new-expense-form-modal.component';
 
 describe('NewEwpenseFormModalComponent', () => {
-  let component: NewEwpenseFormModalComponent;
-  let fixture: ComponentFixture<NewEwpenseFormModalComponent>;
+  let component: NewExpenseFormModalComponent;
+  let fixture: ComponentFixture<NewExpenseFormModalComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewEwpenseFormModalComponent ],
+      declarations: [ NewExpenseFormModalComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NewEwpenseFormModalComponent);
+    fixture = TestBed.createComponent(NewExpenseFormModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

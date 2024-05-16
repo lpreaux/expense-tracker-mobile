@@ -1,9 +1,10 @@
-import {Component, computed, effect, OnInit, signal, ViewChild} from '@angular/core';
+import {Component, computed, effect, signal, ViewChild} from '@angular/core';
 import {GroupTrackerService} from "../group-tracker.service";
-import {IonModal, ModalController} from "@ionic/angular";
-import {NewEwpenseFormModalComponent} from "./components/new-ewpense-form-modal/new-ewpense-form-modal.component";
+import {ActionSheetController, IonModal, ModalController} from "@ionic/angular";
+import {NewExpenseFormModalComponent} from "./components/new-expense-form-modal/new-expense-form-modal.component";
 import {Expense, ExpenseService} from "../../providers/expense.service";
-import {toSignal} from "@angular/core/rxjs-interop";
+import {Router} from "@angular/router";
+import {GroupService} from "../../providers/group.service";
 
 @Component({
   selector: 'app-expenses',
@@ -17,20 +18,21 @@ export class ExpensesPage {
   protected expenses = signal<Expense[] | undefined>(undefined);
   protected totalExpenses = computed(() => {
     return this.expenses()?.reduce(
-      (acc, expense) => acc += expense.amount,
+      (acc, expense) => acc + expense.amount,
       0
     );
   })
-  private expenseRetrieve = effect(() => {
-    this.group();
-    this.refreshExpenses()
-  });
 
   constructor(
     private groupTrackerService: GroupTrackerService,
     private expenseService: ExpenseService,
-    private modalController: ModalController
+    private modalCtrl: ModalController,
+    private actionSheetCtrl: ActionSheetController,
   ) {
+    effect(() => {
+      this.group();
+      this.refreshExpenses()
+    });
   }
 
   private refreshExpenses() {
@@ -42,8 +44,8 @@ export class ExpensesPage {
   }
 
   async openNewExpenseModal() {
-    const modal = await this.modalController.create({
-      component: NewEwpenseFormModalComponent,
+    const modal = await this.modalCtrl.create({
+      component: NewExpenseFormModalComponent,
     });
     modal.present();
 
@@ -54,5 +56,33 @@ export class ExpensesPage {
       this.expenseService.createOne(data!)
         .subscribe(() => this.refreshExpenses());
     }
+  }
+
+  async showGroupActionsSheet() {
+    const actionSheet = await this.actionSheetCtrl.create({
+        header: 'Groupe',
+        buttons: [
+          {
+            text: 'Supprimer',
+            role: 'destructive',
+            handler: () => this.groupTrackerService.deleteCurrentGroup(),
+          },
+          {
+            text: 'Modifier',
+            role: 'update',
+            handler: () => this.groupTrackerService.showUpdateGroupModal(),
+          },
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            data: {
+              action: 'cancel',
+            },
+          },
+        ],
+      }
+    );
+
+    actionSheet.present();
   }
 }

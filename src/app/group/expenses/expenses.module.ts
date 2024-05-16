@@ -5,7 +5,7 @@ import { ExpensesRoutingModule } from './expenses-routing.module';
 import {ExpensesPage} from "./expenses.page";
 import {IonicModule} from "@ionic/angular";
 import {ExpensesListItemComponent} from "./components/expenses-list-item/expenses-list-item.component";
-import {NewEwpenseFormModalComponent} from "./components/new-ewpense-form-modal/new-ewpense-form-modal.component";
+import {NewExpenseFormModalComponent} from "./components/new-expense-form-modal/new-expense-form-modal.component";
 import {ReactiveFormsModule} from "@angular/forms";
 
 
@@ -13,7 +13,7 @@ import {ReactiveFormsModule} from "@angular/forms";
   declarations: [
     ExpensesPage,
     ExpensesListItemComponent,
-    NewEwpenseFormModalComponent
+    NewExpenseFormModalComponent,
   ],
     imports: [
         CommonModule,

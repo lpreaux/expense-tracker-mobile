@@ -36,12 +36,12 @@ Fonctionnalités que j'attends pour le mini-projet :
 
 En tant qu'utilisateur :
 
-- [ ] CRUD Groupe :
+- [x] CRUD Groupe :
   - [x] Lister les groupes
   - [x] Affiché les infos d'un groupe
-  - [ ] Ajout d'un groupe
-  - [ ] Modification d'un groupe
-  - [ ] Suppression d'un groupe
+  - [x] Ajout d'un groupe
+  - [x] Modification d'un groupe
+  - [x] Suppression d'un groupe
 - [ ] CRUD Dépense :
   - [x] Lister les dépenses d'un groupe
   - [ ] Affiché le détail d'une dépense

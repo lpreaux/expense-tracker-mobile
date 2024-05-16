@@ -140,7 +140,7 @@ export class IndexedDbService {
       try {
         console.log("localdb.getAllByIndex - subscribed!");
         this._db.pipe(first()).subscribe(db => {
-          console.log("localdb.getAll - got db:", db);
+          console.log("localdb.getAllByIndex - got db:", db);
           if (!db) {
             subscriber.error("IndexedDB not supported!");
             return;
@@ -157,6 +157,46 @@ export class IndexedDbService {
           };
           req.onsuccess = function (e: any) {
             console.log("localdb.getAllByIndex - store success:", e);
+            subscriber.next(e.target.result);
+            subscriber.complete();
+          };
+        });
+      } catch (err) {
+        subscriber.error(err);
+      }
+    });
+  }
+
+
+  getAllKeysByIndex<T>(
+    storeName: string,
+    indexName: string,
+    query?: IDBValidKey | IDBKeyRange | null | undefined,
+    count?: number | undefined
+  ): Observable<T[]> {
+    this.initializedIfNot();
+    console.log("localdb.getAllKeysByIndex");
+    return new Observable(subscriber => {
+      try {
+        console.log("localdb.getAllKeyByIndex - subscribed!");
+        this._db.pipe(first()).subscribe(db => {
+          console.log("localdb.getAllKeysByIndex - got db:", db);
+          if (!db) {
+            subscriber.error("IndexedDB not supported!");
+            return;
+          }
+
+          const txn = db.transaction([storeName], "readonly");
+          const store = txn.objectStore(storeName);
+          const index = store.index(indexName);
+          const req = index.getAllKeys(query, count);
+          req.onerror = function (e: any) {
+            console.log("localdb.getAllKeysByIndex - store error event:", e);
+            subscriber.error(e.target.error);
+            return;
+          };
+          req.onsuccess = function (e: any) {
+            console.log("localdb.getAllKeysByIndex - store success:", e);
             subscriber.next(e.target.result);
             subscriber.complete();
           };
@@ -190,6 +230,39 @@ export class IndexedDbService {
           };
           req.onsuccess = function (e: any) {
             console.log("localdb.get - store success:", e);
+            subscriber.next(e.target.result);
+            subscriber.complete();
+          };
+        });
+      } catch (err) {
+        subscriber.error(err);
+      }
+    });
+  }
+
+  delete(storeName: string, key: any): Observable<undefined> {
+    this.initializedIfNot();
+    console.log("localdb.delete");
+    return new Observable(subscriber => {
+      try {
+        console.log("localdb.delete - subscribed!");
+        this._db.pipe(first()).subscribe(db => {
+          console.log("localdb.delete - got db:", db);
+          if (!db) {
+            subscriber.error("IndexedDB not supported!");
+            return;
+          }
+
+          const txn = db.transaction([storeName], "readwrite");
+          const store = txn.objectStore(storeName);
+          const req = store.delete(key);
+          req.onerror = function (e: any) {
+            console.log("localdb.delete - store error event:", e);
+            subscriber.error(e.target.error);
+            return;
+          };
+          req.onsuccess = function (e: any) {
+            console.log("localdb.delete - store success:", e);
             subscriber.next(e.target.result);
             subscriber.complete();
           };

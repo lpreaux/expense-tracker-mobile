@@ -53,4 +53,23 @@ export class GroupService {
     this._lastGroupUse.set(value);
     this.localStorageService.setItem(this._LAST_GROUP_USE_LS_KEY, String(value.id))
   }
+
+  createOne(group: Omit<Group, "id">) {
+    return this.indexedDb.put<Group>(
+      groupStoreDefinition.name,
+      undefined,
+      group
+    )
+  }
+
+  deleteOne(group: Group) {
+    if (this.lastGroupUse() === group) {
+      this._lastGroupUse.set(undefined);
+    }
+    return this.indexedDb.delete(groupStoreDefinition.name, group.id);
+  }
+
+  updateOne(group: Group) {
+    return this.indexedDb.put<Group>(groupStoreDefinition.name, undefined, group);
+  }
 }

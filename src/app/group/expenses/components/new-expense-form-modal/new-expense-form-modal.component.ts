@@ -7,11 +7,11 @@ import {Capacitor} from "@capacitor/core";
 import {Expense} from "../../../../providers/expense.service";
 
 @Component({
-  selector: 'app-new-ewpense-form-modal',
-  templateUrl: './new-ewpense-form-modal.component.html',
-  styleUrls: ['./new-ewpense-form-modal.component.scss'],
+  selector: 'app-new-expense-form-modal',
+  templateUrl: './new-expense-form-modal.component.html',
+  styleUrls: ['./new-expense-form-modal.component.scss'],
 })
-export class NewEwpenseFormModalComponent {
+export class NewExpenseFormModalComponent {
 
   protected expenseForm = this.formBuilder.group({
     label: [''],

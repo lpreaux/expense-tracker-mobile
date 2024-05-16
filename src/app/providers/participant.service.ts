@@ -30,4 +30,12 @@ export class ParticipantService {
   getAllByGroup(group: Group) {
     return this.indexedDb.getAllByIndex<Participant>(participantStoreDefinition.name, 'groupId', group.id);
   }
+
+  deleteOneById(id: number) {
+    return this.indexedDb.delete(participantStoreDefinition.name, id);
+  }
+
+  getAllKeysByGroup(group: Group) {
+    return this.indexedDb.getAllKeysByIndex<number>(participantStoreDefinition.name, 'groupId', group.id);
+  }
 }

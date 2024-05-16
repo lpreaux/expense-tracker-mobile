@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {IndexedDbService, StoreCreationObject} from "../db/indexed-db.service";
+import {Group} from "./group.service";
 
 export interface Expense {
   id: number;
@@ -40,5 +41,13 @@ export class ExpenseService {
       undefined,
       expense
     );
+  }
+
+  deleteOneById(id: number) {
+    return this.indexedDb.delete(expenseStoreDefinition.name, id);
+  }
+
+  getAllKeysByGroup(group: Group) {
+    return this.indexedDb.getAllKeysByIndex<number>(expenseStoreDefinition.name, 'groupId', group.id);
   }
 }

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Modification Groupe</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form id="groupForm" class="ion-padding" [formGroup]="groupForm">
+    <ion-input formControlName="name" label="Nom" labelPlacement="floating" fill="solid"></ion-input>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button type="submit" form="groupForm" (click)="confirm()" fill="solid" color="primary" [strong]="true" [disabled]="groupForm.invalid">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
