@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {IndexedDbService, StoreCreationObject} from "../db/indexed-db.service";
-import {Group} from "./group.service";
 
 export interface Expense {
   id: number;
   groupId: number;
   amount: number;
   label: string;
+  participantId: number;
   proofImgUrl?: string;
 }
 

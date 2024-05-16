@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Group, groupStoreDefinition} from "./providers/group.service";
 import {IndexedDbService} from "./db/indexed-db.service";
 import {Expense, expenseStoreDefinition} from "./providers/expense.service";
+import {Participant, participantStoreDefinition} from "./providers/participant.service";
 
 const mockGroups: Group[] = [
   { id: 1, name: "Planification de vacances" },
@@ -17,37 +18,52 @@ const mockGroups: Group[] = [
 ];
 
 const mockExpenses: Expense[] = [
-  { id: 1, groupId: 1, amount: 150.00, label: "Billet d'avion" },
-  { id: 2, groupId: 1, amount: 200.00, label: "Hôtel" },
-  { id: 3, groupId: 1, amount: 50.00, label: "Location de voiture" },
-  { id: 4, groupId: 2, amount: 30.00, label: "Stylos" },
-  { id: 5, groupId: 2, amount: 120.00, label: "Papier" },
-  { id: 6, groupId: 2, amount: 200.00, label: "Imprimantes" },
-  { id: 7, groupId: 3, amount: 100.00, label: "Gâteau" },
-  { id: 8, groupId: 3, amount: 150.00, label: "Décorations" },
-  { id: 9, groupId: 3, amount: 300.00, label: "Lieu" },
-  { id: 10, groupId: 4, amount: 500.00, label: "Traiteur" },
-  { id: 11, groupId: 4, amount: 800.00, label: "Groupe musical" },
-  { id: 12, groupId: 4, amount: 1500.00, label: "Photographe" },
-  { id: 13, groupId: 5, amount: 120.00, label: "Électricité" },
-  { id: 14, groupId: 5, amount: 30.00, label: "Eau" },
-  { id: 15, groupId: 5, amount: 50.00, label: "Internet" },
-  { id: 16, groupId: 6, amount: 200.00, label: "Essence" },
-  { id: 17, groupId: 6, amount: 150.00, label: "Hébergement" },
-  { id: 18, groupId: 6, amount: 100.00, label: "Nourriture" },
-  { id: 19, groupId: 7, amount: 2000.00, label: "Matériaux" },
-  { id: 20, groupId: 7, amount: 3000.00, label: "Main-d'œuvre" },
-  { id: 21, groupId: 7, amount: 500.00, label: "Peinture" },
-  { id: 22, groupId: 8, amount: 75.00, label: "Cotisation" },
-  { id: 23, groupId: 8, amount: 50.00, label: "Équipement" },
-  { id: 24, groupId: 8, amount: 20.00, label: "Rafraîchissements" },
-  { id: 25, groupId: 9, amount: 999.00, label: "Smartphone" },
-  { id: 26, groupId: 9, amount: 399.00, label: "Montre intelligente" },
-  { id: 27, groupId: 9, amount: 199.00, label: "Écouteurs" },
-  { id: 28, groupId: 10, amount: 15.00, label: "Nouveautés" },
-  { id: 29, groupId: 10, amount: 25.00, label: "Classiques" },
-  { id: 30, groupId: 10, amount: 30.00, label: "Biographies" }
+  { id: 1, groupId: 1, amount: 150.00, label: "Billet d'avion", participantId: 1 },
+  { id: 2, groupId: 1, amount: 200.00, label: "Hôtel", participantId: 2 },
+  { id: 3, groupId: 1, amount: 50.00, label: "Location de voiture", participantId: 3 },
+  { id: 4, groupId: 2, amount: 30.00, label: "Stylos", participantId: 4 },
+  { id: 5, groupId: 2, amount: 120.00, label: "Papier", participantId: 5 },
+  { id: 6, groupId: 3, amount: 100.00, label: "Gâteau", participantId: 6 },
+  { id: 7, groupId: 3, amount: 150.00, label: "Décorations", participantId: 7 },
+  { id: 8, groupId: 4, amount: 500.00, label: "Traiteur", participantId: 8 },
+  { id: 9, groupId: 4, amount: 800.00, label: "Groupe musical", participantId: 9 },
+  { id: 10, groupId: 5, amount: 120.00, label: "Électricité", participantId: 10 },
+  { id: 11, groupId: 6, amount: 200.00, label: "Essence", participantId: 11 },
+  { id: 12, groupId: 6, amount: 150.00, label: "Hébergement", participantId: 12 },
+  { id: 13, groupId: 7, amount: 2000.00, label: "Matériaux", participantId: 13 },
+  { id: 14, groupId: 7, amount: 3000.00, label: "Main-d'œuvre", participantId: 14 },
+  { id: 15, groupId: 8, amount: 75.00, label: "Cotisation", participantId: 15 },
+  { id: 16, groupId: 8, amount: 50.00, label: "Équipement", participantId: 16 },
+  { id: 17, groupId: 9, amount: 999.00, label: "Smartphone", participantId: 17 },
+  { id: 18, groupId: 9, amount: 399.00, label: "Montre intelligente", participantId: 18 },
+  { id: 19, groupId: 10, amount: 15.00, label: "Nouveautés", participantId: 19 },
+  { id: 20, groupId: 10, amount: 25.00, label: "Classiques", participantId: 20 }
 ];
+
+const mockParticipants: Participant[] = [
+  { id: 1, groupId: 1, lastname: "Dupont", firstname: "Jean" },
+  { id: 2, groupId: 1, lastname: "Martin", firstname: "Alice" },
+  { id: 3, groupId: 1, lastname: "Bernard", firstname: "Claude" },
+  { id: 4, groupId: 2, lastname: "Thomas", firstname: "Sarah" },
+  { id: 5, groupId: 2, lastname: "Petit", firstname: "Luc" },
+  { id: 6, groupId: 3, lastname: "Robert", firstname: "Chloé" },
+  { id: 7, groupId: 3, lastname: "Richard", firstname: "Étienne" },
+  { id: 8, groupId: 4, lastname: "Durand", firstname: "Marie" },
+  { id: 9, groupId: 4, lastname: "Leroy", firstname: "Julien" },
+  { id: 10, groupId: 5, lastname: "Moreau", firstname: "Isabelle" },
+  { id: 11, groupId: 6, lastname: "Simon", firstname: "Paul" },
+  { id: 12, groupId: 6, lastname: "Michel", firstname: "Sophie" },
+  { id: 13, groupId: 7, lastname: "Lefevre", firstname: "Mathieu" },
+  { id: 14, groupId: 7, lastname: "Lemoine", firstname: "Charlotte" },
+  { id: 15, groupId: 8, lastname: "Garcia", firstname: "Emilie" },
+  { id: 16, groupId: 8, lastname: "David", firstname: "Philippe" },
+  { id: 17, groupId: 9, lastname: "Roux", firstname: "Nicolas" },
+  { id: 18, groupId: 9, lastname: "Fontaine", firstname: "Julia" },
+  { id: 19, groupId: 10, lastname: "Vincent", firstname: "Stéphane" },
+  { id: 20, groupId: 10, lastname: "Muller", firstname: "Fanny" }
+];
+
+
 
 
 
@@ -64,7 +80,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // Saving mock Data for testing
     mockGroups.forEach(group => this.indexedDb.put<Group>(groupStoreDefinition.name, undefined, group).subscribe())
-    mockExpenses.forEach(expense => this.indexedDb.put<Group>(expenseStoreDefinition.name, undefined, expense).subscribe())
-
+    mockExpenses.forEach(expense => this.indexedDb.put<Expense>(expenseStoreDefinition.name, undefined, expense).subscribe())
+    mockParticipants.forEach(participant => this.indexedDb.put<Participant>(participantStoreDefinition.name, undefined, participant).subscribe())
   }
 }

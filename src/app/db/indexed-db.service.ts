@@ -8,6 +8,7 @@ import {
 import {DB_CONFIG, DbConfig} from "../db.config";
 import {groupStoreDefinition} from "../providers/group.service";
 import {expenseStoreDefinition} from "../providers/expense.service";
+import {participantStoreDefinition} from "../providers/participant.service";
 
 export interface IndexCreationObject {
   name: string;
@@ -32,6 +33,7 @@ export class IndexedDbService {
   private storesDefinition: StoreCreationObject[] = [
     groupStoreDefinition,
     expenseStoreDefinition,
+    participantStoreDefinition,
   ];
 
   private _db: Subject<IDBDatabase | undefined> = new ReplaySubject<

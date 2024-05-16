@@ -17,7 +17,7 @@ const routes: Routes = [
     children: [
       {
         path: 'expenses',
-        loadChildren: () => import('./expenses/expenses.module').then( m => m.ExpensesModule)
+        loadChildren: () => import('./expenses/expenses.module').then( m => m.ExpensesModule),
       },
       {
         path: '',
@@ -30,7 +30,7 @@ const routes: Routes = [
       },
       {
         path: 'participants',
-        component: ParticipantsPage,
+        loadChildren: () => import('./participants/participants.module').then( m => m.ParticipantsModule),
       },
     ]
   }

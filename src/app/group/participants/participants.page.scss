@@ -1,0 +1,13 @@
+#container {
+  padding: 2.5rem 1rem;
+  display: grid;
+  gap: 2rem;
+}
+
+#header {
+  display: grid;
+}
+
+#header ion-text > * {
+  margin: 0;
+}

@@ -1,7 +1,8 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ModalController} from "@ionic/angular";
 import {FormBuilder} from "@angular/forms";
 import {Camera, CameraResultType} from "@capacitor/camera";
+import {Geolocation} from "@capacitor/geolocation";
 import {Capacitor} from "@capacitor/core";
 import {Expense} from "../../../../providers/expense.service";
 
@@ -57,4 +58,10 @@ export class NewEwpenseFormModalComponent {
       this.proofImageUrl.set(imageUrl);
     }
   }
+
+  async printCurrentPosition(){
+    const coordinates = await Geolocation.getCurrentPosition();
+
+    console.log('Current position:', coordinates);
+  };
 }
