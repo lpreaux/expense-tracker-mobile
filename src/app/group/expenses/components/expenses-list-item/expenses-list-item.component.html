@@ -1,0 +1,14 @@
+@if (expense(); as expense) {
+  <ion-item [routerLink]="[expense.id]">
+    <ion-icon aria-hidden="true" name="airplane" slot="start"></ion-icon>
+    <ion-label>
+      <strong>{{ expense.label }}</strong><br/>
+      <ion-text color="medium" class="ion-text-wrap">
+        @if (participant(); as participant) {
+          Payé par {{ participant.firstname }}  {{ participant.lastname }}
+        }
+      </ion-text>
+    </ion-label>
+    <ion-note slot="end">{{ expense.amount | currency : 'EUR' }}</ion-note>
+  </ion-item>
+}

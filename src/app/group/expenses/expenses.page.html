@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ group()?.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showGroupActionsSheet()">
+        <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button (click)="openNewExpenseModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div id="container">
+    <div id="header">
+      <ion-text color="medium">
+        <h3>Total</h3>
+      </ion-text>
+      <ion-text>
+        <h1>{{ totalExpenses() | currency : 'EUR' }}</h1>
+      </ion-text>
+    </div>
+    <ion-list lines="full">
+      @for (expense of expenses(); track expense.id) {
+        <app-expenses-list-item [expense]="expense"></app-expenses-list-item>
+      }
+    </ion-list>
+  </div>
+</ion-content>

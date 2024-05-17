@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Modification Dépense</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form id="expenseForm" [formGroup]="expenseForm">
+    <ion-input class="ion-margin-bottom" formControlName="label" label="Libellé" labelPlacement="floating"
+               fill="solid"></ion-input>
+    <ion-input class="ion-margin-bottom" type="number" formControlName="amount" label="Montant"
+               labelPlacement="floating" fill="solid"></ion-input>
+    <ion-select class="ion-margin-bottom" formControlName="participantId" label="Payé par" labelPlacement="floating"
+                fill="solid">
+      @for (participant of participants(); track participant.id) {
+        <ion-select-option [value]="participant.id">{{ participant.firstname }} {{ participant.lastname }}
+        </ion-select-option>
+      }
+    </ion-select>
+    <ion-card class="ion-no-margin ion-margin-bottom" (click)="takePicture()" color="light">
+      @if (proofImageUrl(); as imageUrl) {
+        <img alt="proof image" [src]="imageUrl"/>
+      } @else {
+        <ion-card-content>Cliquer ici pour ajouter un justificatif</ion-card-content>
+      }
+    </ion-card>
+    <ion-radio-group #locationRadio class="ion-margin-bottom" formControlName="locationType" value="currentLocation">
+      <ion-text><h4>Lieu</h4></ion-text>
+      <ion-radio value="currentLocation" labelPlacement="end">Position actuelle</ion-radio>
+      <br/>
+      <ion-radio value="other" labelPlacement="end">Autre</ion-radio>
+      <br/>
+      @if (locationRadio.value === 'other') {
+        <ion-input class="ion-margin-bottom" formControlName="location" placeholder="Précisez..."
+                   aria-label="Autre lieu" fill="solid"></ion-input>
+      }
+    </ion-radio-group>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+      <ion-button type="submit" form="expenseForm" (click)="confirm()" fill="solid" color="primary" [strong]="true"
+                  [disabled]="true">Confirm
+      </ion-button>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

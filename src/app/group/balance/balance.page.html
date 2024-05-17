@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ group()!.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showGroupActionsSheet()">
+        <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text>
+    Équilibre
+  </ion-text>
+  <app-wip></app-wip>
+</ion-content>
