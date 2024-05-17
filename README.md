@@ -29,7 +29,7 @@ Fonctionnalités que j'attends pour le mini-projet :
 - [x] Sauvegarde des dépenses dans indexedDb.
 - [x] Sauvegarde des groupes dans indexedDb.
 - [x] Sauvegarde des participants dans indexedDb.
-- [ ] 1 dépense peut être associé à un lieu qui peut être obtenu grâce à la géolocalisation.
+- [x] 1 dépense peut être associé à un lieu qui peut être obtenu grâce à la géolocalisation.
 - [x] Pouvoir ajouter une photo d'un ticket à une dépense.
 
 #### Cas d'utilisation détaillé :
@@ -44,10 +44,10 @@ En tant qu'utilisateur :
   - [x] Suppression d'un groupe
 - [ ] CRUD Dépense :
   - [x] Lister les dépenses d'un groupe
-  - [ ] Affiché le détail d'une dépense
+  - [x] Affiché le détail d'une dépense
   - [x] Ajout d'une dépense dans un groupe
   - [ ] Modification d'une dépense
-  - [ ] Suppression d'une dépense
+  - [x] Suppression d'une dépense
 - [x] CRUD Participant :
   - [x] Lister les participants d'un groupe
   - [x] Ajout d'un participant dans un groupe
@@ -56,13 +56,14 @@ En tant qu'utilisateur :
 
 #### Règles métiers :
 
-- [ ] Groupe:
-  - [ ] Un groupe a forcément un nom
-- [ ] Dépense:
-  - [ ] Une dépense a forcément un libellé
-  - [ ] Une dépense a forcément un montant
-- [ ] Participant:
-  - [ ] Un participant a forcément un nom
+- [x] Groupe:
+  - [x] Un groupe a forcément un nom
+- [x] Dépense:
+  - [x] Une dépense a forcément un libellé
+  - [x] Une dépense a forcément un montant
+  - [x] Une personne a forcément un participant (la personne qui a payé)
+- [x] Participant:
+  - [x] Un participant a forcément un nom
 
 
 ### 2ème étape :
@@ -105,3 +106,23 @@ Une maquette figma avec un prototype fonctionnel est disponible à l'adresse sui
 plugin Capacitor :
 - @capacitor/camera
 - @capacitor/geolocation
+
+
+---
+## Usage
+
+L'application fonctionne avec dans le navigateur (fonctionnalité native testé avec google chrome)
+
+```
+ionic serve
+```
+
+L'application fonctionne également sur smartphone ou avec un émulateur :
+
+```
+ionic cap run android
+```
+
+> [!NOTE]
+> La récupération de la géolocalisation lors de l'enregistrement d'une dépense avec la "Position actuelle" comme lieu prend du temps (particulièrement sur mobile)
+> et il n'y a pas encore d'indicateur ce qui peut faire pensé que l'application a planté. Mais ça fonctionne bien, il faut juste laissé quelque seconde à l'application.

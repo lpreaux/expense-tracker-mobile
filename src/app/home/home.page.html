@@ -17,7 +17,11 @@
       <section>
         <ion-text>Souhaitez-vous reprendre où vous en étiez ?</ion-text>
         <ion-card [routerLink]="['/', 'group', lastGroupUse.id]">
-          <ion-card-title>{{ lastGroupUse.name }}</ion-card-title>
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-label>{{ lastGroupUse.name }}</ion-label>
+            </ion-item>
+          </ion-card-content>
         </ion-card>
       </section>
     }

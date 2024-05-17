@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Détails Dépense</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showExpenseActionsSheet()">
+        <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  @if (expense(); as expense) {
+    <div id="container">
+      <ion-text><h1>{{ expense.label }}</h1></ion-text>
+      <ion-text>Montant : <strong>{{ expense.amount | currency: 'EUR' }}</strong></ion-text>
+      @if (participant(); as participant) {
+        <ion-text>Payé par  <strong>{{ participant.firstname }} {{ participant.lastname }}</strong></ion-text>
+      }
+      <ion-text><h3>Justificatif</h3></ion-text>
+      <ion-card>
+        @if (expense.proofImgUrl) {
+          <ion-img alt="Justificatif" [src]="expense.proofImgUrl"></ion-img>
+        } @else {
+          <ion-card-content>Pas de justificatif</ion-card-content>
+        }
+      </ion-card>
+      <ion-text><h3>Lieu</h3></ion-text>
+      <ion-text>{{ getLocation(expense) }}</ion-text>
+    </div>
+
+  }
+</ion-content>

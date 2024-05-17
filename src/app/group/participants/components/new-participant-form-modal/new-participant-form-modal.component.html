@@ -11,15 +11,15 @@
 
 <ion-content>
   <form id="participantForm" class="ion-padding" [formGroup]="participantForm">
-    <ion-input formControlName="firstname" label="Prénom" labelPlacement="floating" fill="solid"></ion-input>
-    <ion-input formControlName="lastname" label="Nom" labelPlacement="floating" fill="solid"></ion-input>
+    <ion-input class="ion-margin-bottom" formControlName="firstname" label="Prénom" labelPlacement="floating" fill="solid"></ion-input>
+    <ion-input class="ion-margin-bottom" formControlName="lastname" label="Nom" labelPlacement="floating" fill="solid"></ion-input>
   </form>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-buttons slot="end">
+    <ion-title>
       <ion-button type="submit" form="participantForm" (click)="confirm()" fill="solid" color="primary" [strong]="true" [disabled]="participantForm.invalid">Confirm</ion-button>
-    </ion-buttons>
+    </ion-title>
   </ion-toolbar>
 </ion-footer>

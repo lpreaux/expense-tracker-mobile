@@ -1,6 +1,6 @@
 import {Component, computed, effect, signal, ViewChild} from '@angular/core';
 import {GroupTrackerService} from "../group-tracker.service";
-import {IonModal, ModalController} from "@ionic/angular";
+import {IonModal, ModalController, ViewWillEnter} from "@ionic/angular";
 import {NewExpenseFormModalComponent} from "./components/new-expense-form-modal/new-expense-form-modal.component";
 import {Expense, ExpenseService} from "../../providers/expense.service";
 
@@ -9,7 +9,7 @@ import {Expense, ExpenseService} from "../../providers/expense.service";
   templateUrl: './expenses.page.html',
   styleUrls: ['./expenses.page.scss'],
 })
-export class ExpensesPage {
+export class ExpensesPage implements ViewWillEnter {
   @ViewChild(IonModal) modal!: IonModal;
 
   protected group = this.groupTrackerService.currentGroup;
@@ -30,6 +30,10 @@ export class ExpensesPage {
       this.group();
       this.refreshExpenses()
     });
+  }
+
+  ionViewWillEnter() {
+    this.refreshExpenses();
   }
 
   private refreshExpenses() {

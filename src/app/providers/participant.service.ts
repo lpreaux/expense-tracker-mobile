@@ -42,4 +42,8 @@ export class ParticipantService {
   put(particiapnt: Omit<Participant, "id">) {
     return this.indexedDb.put<Participant>(participantStoreDefinition.name, undefined, particiapnt);
   }
+
+  getById(participantId: number) {
+    return this.indexedDb.get<Participant>(participantStoreDefinition.name, participantId);
+  }
 }

@@ -1,23 +1,24 @@
-import {Component, OnInit, signal} from '@angular/core';
-import {ModalController} from "@ionic/angular";
+import {Component, Input, OnInit, signal} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {Camera, CameraResultType} from "@capacitor/camera";
+import {Participant, ParticipantService} from "../../../../providers/participant.service";
+import {GroupTrackerService} from "../../../group-tracker.service";
+import {ModalController} from "@ionic/angular";
+import {Expense} from "../../../../providers/expense.service";
 import {Geolocation} from "@capacitor/geolocation";
 import {Capacitor} from "@capacitor/core";
-import {Expense} from "../../../../providers/expense.service";
-import {GroupTrackerService} from "../../../group-tracker.service";
-import {Participant, ParticipantService} from "../../../../providers/participant.service";
+import {Camera, CameraResultType} from "@capacitor/camera";
 
 @Component({
-  selector: 'app-new-expense-form-modal',
-  templateUrl: './new-expense-form-modal.component.html',
-  styleUrls: ['./new-expense-form-modal.component.scss'],
+  selector: 'app-update-expense-form-modal',
+  templateUrl: './update-expense-form-modal.component.html',
+  styleUrls: ['./update-expense-form-modal.component.scss'],
 })
-export class NewExpenseFormModalComponent implements OnInit {
+export class UpdateExpenseFormModalComponent implements OnInit {
+  @Input({required: true}) expense!: Expense;
 
   protected expenseForm = this.formBuilder.group({
     label: ['', Validators.required],
-    amount: ['', Validators.required],
+    amount: [0, Validators.required],
     locationType: ['', Validators.required],
     location: [''],
     participantId: ['', Validators.required],
@@ -37,6 +38,15 @@ export class NewExpenseFormModalComponent implements OnInit {
   ngOnInit() {
     this.expenseForm.controls['locationType'].setValue('currentLocation');
     this.getParticpantFromGroup();
+
+    this.expenseForm.controls['label'].setValue(this.expense.label);
+    this.expenseForm.controls['amount'].setValue(this.expense.amount);
+    this.expenseForm.controls['locationType'].setValue(this.expense.locationType);
+    if (this.expense.locationType == "other") {
+      this.expenseForm.controls['location'].setValue(this.expense.location);
+    }
+    this.expenseForm.controls['participantId'].setValue(String(this.expense.participantId));
+    this.proofImageUrl.set(this.expense.proofImgUrl);
   }
 
   cancel() {
@@ -45,7 +55,7 @@ export class NewExpenseFormModalComponent implements OnInit {
 
   async confirm() {
     const newExpense: Partial<Expense> = Object.assign(this.expenseForm.getRawValue(), {
-      proofImgUrl: this.proofImageUrl(),
+      proofImageUrl: this.proofImageUrl(),
     } as Partial<Expense>);
     if (newExpense.locationType === 'currentLocation') {
       const position = await Geolocation.getCurrentPosition();
@@ -99,5 +109,4 @@ export class NewExpenseFormModalComponent implements OnInit {
     }
   }
 
-  protected readonly String = String;
-}
+  protected readonly String = String;}
