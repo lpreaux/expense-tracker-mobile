@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {GroupTrackerService} from "../group-tracker.service";
 
 @Component({
@@ -6,12 +6,15 @@ import {GroupTrackerService} from "../group-tracker.service";
   templateUrl: './balance.page.html',
   styleUrls: ['./balance.page.scss'],
 })
-export class BalancePage implements OnInit {
+export class BalancePage {
   protected group = this.groupTrackerService.currentGroup;
 
   constructor(
     private groupTrackerService: GroupTrackerService
-  ) {}
+  ) {
+  }
 
-  ngOnInit() {}
+  showGroupActionsSheet() {
+    this.groupTrackerService.showGroupActionsSheet();
+  }
 }

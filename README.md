@@ -48,11 +48,11 @@ En tant qu'utilisateur :
   - [x] Ajout d'une dépense dans un groupe
   - [ ] Modification d'une dépense
   - [ ] Suppression d'une dépense
-- [ ] CRUD Participant :
+- [x] CRUD Participant :
   - [x] Lister les participants d'un groupe
-  - [ ] Ajout d'un participant dans un groupe
-  - [ ] Modification d'un participant
-  - [ ] Suppression d'un participant
+  - [x] Ajout d'un participant dans un groupe
+  - [x] Modification d'un participant
+  - [x] Suppression d'un participant
 
 #### Règles métiers :
 

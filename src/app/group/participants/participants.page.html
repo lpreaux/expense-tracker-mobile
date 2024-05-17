@@ -4,12 +4,22 @@
       <ion-back-button default-href="/"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ group()!.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showGroupActionsSheet()">
+        <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button (click)="openNewParticipantModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <div id="container">
-    <ion-refresher slot="fixed" (ionRefresh)="refreshParticipant($event)">
+    <ion-refresher slot="fixed" (ionRefresh)="refreshParticipants($event)">
       <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
     <div id="header">
@@ -19,7 +29,14 @@
     </div>
     <ion-list lines="full">
       @for (participant of participants(); track participant.id) {
-        <ion-item>{{ participant.firstname }} {{ participant.lastname }}</ion-item>
+        <ion-item>
+          <ion-label>{{ participant.firstname }} {{ participant.lastname }}</ion-label>
+          <ion-buttons slot="end">
+            <ion-button (click)="showParticipantActionsSheet(participant)">
+              <ion-icon slot="icon-only" name="ellipsis-horizontal"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
       }
     </ion-list>
   </div>

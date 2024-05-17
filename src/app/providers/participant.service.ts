@@ -38,4 +38,8 @@ export class ParticipantService {
   getAllKeysByGroup(group: Group) {
     return this.indexedDb.getAllKeysByIndex<number>(participantStoreDefinition.name, 'groupId', group.id);
   }
+
+  put(particiapnt: Omit<Participant, "id">) {
+    return this.indexedDb.put<Participant>(participantStoreDefinition.name, undefined, particiapnt);
+  }
 }

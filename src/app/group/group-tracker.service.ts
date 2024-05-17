@@ -3,7 +3,7 @@ import {Group, GroupService} from "../providers/group.service";
 import {Router} from "@angular/router";
 import {ExpenseService} from "../providers/expense.service";
 import {ParticipantService} from "../providers/participant.service";
-import {ModalController} from "@ionic/angular";
+import {ActionSheetController, ModalController} from "@ionic/angular";
 import {UpdateGroupFormModalComponent} from "./components/update-group-form-modal/update-group-form-modal.component";
 
 @Injectable({
@@ -20,6 +20,7 @@ export class GroupTrackerService {
     private expenseService: ExpenseService,
     private participantService: ParticipantService,
     private modalCtrl: ModalController,
+    private actionSheetCtrl: ActionSheetController,
     private router: Router,
   ) {
   }
@@ -35,7 +36,35 @@ export class GroupTrackerService {
       });
   }
 
-  deleteCurrentGroup() {
+  async showGroupActionsSheet() {
+    const actionSheet = await this.actionSheetCtrl.create({
+        header: 'Groupe',
+        buttons: [
+          {
+            text: 'Supprimer',
+            role: 'destructive',
+            handler: () => this.deleteCurrentGroup(),
+          },
+          {
+            text: 'Modifier',
+            role: 'update',
+            handler: () => this.showUpdateGroupModal(),
+          },
+          {
+            text: 'Annuler',
+            role: 'cancel',
+            data: {
+              action: 'cancel',
+            },
+          },
+        ],
+      }
+    );
+
+    actionSheet.present();
+  }
+
+  private deleteCurrentGroup() {
     const group = this._currentGroup();
     this._currentGroup.set(undefined);
 
@@ -46,7 +75,7 @@ export class GroupTrackerService {
     }
   }
 
-  async showUpdateGroupModal() {
+  private async showUpdateGroupModal() {
     const modal = await this.modalCtrl.create({
       component: UpdateGroupFormModalComponent,
       componentProps: {

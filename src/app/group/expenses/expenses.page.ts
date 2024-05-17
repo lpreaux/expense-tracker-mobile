@@ -1,10 +1,8 @@
 import {Component, computed, effect, signal, ViewChild} from '@angular/core';
 import {GroupTrackerService} from "../group-tracker.service";
-import {ActionSheetController, IonModal, ModalController} from "@ionic/angular";
+import {IonModal, ModalController} from "@ionic/angular";
 import {NewExpenseFormModalComponent} from "./components/new-expense-form-modal/new-expense-form-modal.component";
 import {Expense, ExpenseService} from "../../providers/expense.service";
-import {Router} from "@angular/router";
-import {GroupService} from "../../providers/group.service";
 
 @Component({
   selector: 'app-expenses',
@@ -27,7 +25,6 @@ export class ExpensesPage {
     private groupTrackerService: GroupTrackerService,
     private expenseService: ExpenseService,
     private modalCtrl: ModalController,
-    private actionSheetCtrl: ActionSheetController,
   ) {
     effect(() => {
       this.group();
@@ -58,31 +55,8 @@ export class ExpensesPage {
     }
   }
 
-  async showGroupActionsSheet() {
-    const actionSheet = await this.actionSheetCtrl.create({
-        header: 'Groupe',
-        buttons: [
-          {
-            text: 'Supprimer',
-            role: 'destructive',
-            handler: () => this.groupTrackerService.deleteCurrentGroup(),
-          },
-          {
-            text: 'Modifier',
-            role: 'update',
-            handler: () => this.groupTrackerService.showUpdateGroupModal(),
-          },
-          {
-            text: 'Annuler',
-            role: 'cancel',
-            data: {
-              action: 'cancel',
-            },
-          },
-        ],
-      }
-    );
-
-    actionSheet.present();
+  showGroupActionsSheet() {
+    this.groupTrackerService.showGroupActionsSheet();
   }
+
 }

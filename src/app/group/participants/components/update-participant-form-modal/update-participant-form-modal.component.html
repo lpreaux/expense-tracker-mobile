@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Nouveau Participant</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form id="participantForm" class="ion-padding" [formGroup]="participantForm">
+    <ion-input formControlName="firstname" label="Prénom" labelPlacement="floating" fill="solid"></ion-input>
+    <ion-input formControlName="lastname" label="Nom" labelPlacement="floating" fill="solid"></ion-input>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button type="submit" form="participantForm" (click)="confirm()" fill="solid" color="primary" [strong]="true" [disabled]="participantForm.invalid">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
